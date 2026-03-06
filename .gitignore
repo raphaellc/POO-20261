@@ -39,3 +39,198 @@
 
 # debug information files
 *.dwo
+#######################################
+#            C/C++ gerais             #
+#######################################
+# Objetos e binários
+*.o
+*.obj
+*.lo
+*.la
+*.al
+*.a
+*.so
+*.so.*
+*.dylib
+*.dll
+*.lib
+*.exp
+*.pdb
+*.idb
+*.d
+*.s
+*.su
+
+# Executáveis / saídas
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Arquivos de profiling/coverage
+*.gcda
+*.gcno
+*.gcov
+*.prof
+*.profraw
+*.profdata
+
+# Dumps / core
+core
+*.core
+*.dump
+*.dmp
+
+#######################################
+#           Build systems             #
+#######################################
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake-build-*/
+CMakeScripts/
+Testing/
+CTestTestfile.cmake
+install_manifest.txt
+compile_commands.json
+_commented_compile_commands.json
+Makefile
+makefile
+GNUmakefile
+cmake-install.cmake
+
+# Meson
+meson-logs/
+meson-private/
+subprojects/packagecache/
+compile_commands.json
+build.ninja
+
+# Ninja
+*.ninja
+.ninja_deps
+.ninja_log
+
+# Autotools
+/.deps/
+/.libs/
+config.log
+config.status
+configure
+autom4te.cache/
+libtool
+
+# QMake
+*.pro.user
+*.qbs.user
+*.qmlproject.user
+*.qmake.stash
+
+# Bazel
+/bazel-*
+
+# Make builds comuns
+build/
+bin/
+lib/
+obj/
+out/
+dist/
+Debug/
+Release/
+debug/
+release/
+
+#######################################
+#         Gerenciadores C/C++         #
+#######################################
+# vcpkg
+vcpkg_installed/
+vcpkg-configuration.json.user
+
+# Conan
+conanbuild/
+conanbuildinfo.*
+conaninfo.txt
+conan.lock
+.conan/
+.cmake-conan/
+
+# Hunter
+/_3rdParty
+/_deps
+/_builds
+
+# ccache
+.ccache/
+
+#######################################
+#            Ferramentas C++          #
+#######################################
+# clangd
+.cache/
+.cache/clangd/
+.clangd/
+.clang-tidy
+.clang-format
+
+# ccls
+.ccls-cache/
+
+# Valgrind/Helgrind
+callgrind.out.*
+cachegrind.out.*
+
+#######################################
+#              VS Code                #
+#######################################
+.vscode/
+.vscode-test/
+# Se você versiona settings ou tasks, remova comentários das linhas abaixo:
+# .vscode/settings.json
+# .vscode/tasks.json
+# .vscode/launch.json
+# .vscode/extensions.json
+
+#######################################
+#          SOs / Editores comuns      #
+#######################################
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+
+# Linux / temporários
+*~
+.*.swp
+.*.swo
+.nfs*
+*.tmp
+*.temp
+
+# Logs genéricos
+*.log
+logs/
+
+#######################################
+#            Antigravity              #
+#######################################
+.antigravity/
+.antigravity-cache/
+antigravity-cache/
+.antigravity-temp/
+antigravity-temp/
+.antigravity-work/
+antigravity-work/
+.antigravity-settings.json
+antigravity.settings.json
+.antigravity-settings/
+antigravity-settings/
