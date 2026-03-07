@@ -7,6 +7,7 @@ using namespace std;
             nome = "";
             idade = 0;
         }
+        Pessoa::~Pessoa(){}
         void Pessoa::definirNome(std::string n){
             nome = n;
         }
@@ -19,4 +20,3 @@ using namespace std;
         int Pessoa::dizerSuaIdade() {
             return idade;
         }
-        

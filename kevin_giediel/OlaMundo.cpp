@@ -8,6 +8,7 @@ int main() {
     cout << "Ola, Mundo!" << "Quem esta me programando?" << endl;
     Pessoa p1;
     Pessoa * p2 = &p1;
+    p2 = new Pessoa();
     string nome;
     int idade;
     cin >> nome;
@@ -19,5 +20,7 @@ int main() {
     cin >> idade;
     p1.definirIdade(idade);
     cout << "Sua idade e: " << p1.dizerSuaIdade() << " anos." << endl;
+    // destruindo o objeto Pessoa armazenado em p2
+    delete p2;
     return 0;
 }

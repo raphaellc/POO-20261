@@ -10,6 +10,7 @@ class Pessoa {
 
     public:
     Pessoa();
+    ~Pessoa();
     void definirNome(string n);
     string dizerSeuNome();
     void definirIdade(int i);
