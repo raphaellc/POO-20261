@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "Pessoa.cpp"
+#include "Pessoa.h"
 using namespace std;
 
 

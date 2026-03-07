@@ -1,28 +1,22 @@
 #include <string>
+#include "Pessoa.h"
 
 using namespace std;
 
-class Pessoa {
-    private:
-        string nome;
-        int idade;
-        
-        public:
-        
-        Pessoa() {  
+         Pessoa::Pessoa() {  
             nome = "";
             idade = 0;
         }
-        void definirNome(std::string n){
+        void Pessoa::definirNome(std::string n){
             nome = n;
         }
-        string dizerSeuNome() {
+        string Pessoa::dizerSeuNome() {
             return nome;
         }
-        void definirIdade(int i) {
+        void Pessoa::definirIdade(int i) {
             idade = i;
         }
-        int dizerSuaIdade() {
+        int Pessoa::dizerSuaIdade() {
             return idade;
         }
-};
+        
