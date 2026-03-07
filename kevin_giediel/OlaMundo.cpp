@@ -7,6 +7,7 @@ using namespace std;
 int main() {
     cout << "Ola, Mundo!" << "Quem esta me programando?" << endl;
     Pessoa p1;
+    Pessoa * p2 = &p1;
     string nome;
     int idade;
     cin >> nome;
