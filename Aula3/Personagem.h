@@ -1,11 +1,14 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include "Inventario.h"
+
 using namespace std;
 class Personagem {
     private:
         int vida;
         string nome;
+        Inventario * inv;
     public:
         Personagem();
         ~Personagem();
@@ -17,4 +20,5 @@ class Personagem {
         void defender(int dano);
         void curar(int cura);
         void mostrarStatus();
+        void pegarItem(Item * i);
 };

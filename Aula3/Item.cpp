@@ -5,7 +5,7 @@ using namespace std;
 Item::Item(){  
     this->duracao = 100;
     this->nome = "";
-    this->tipo_item = Espada;
+    this->tipo_item = TIPO::Espada;
 }
 Item::Item(int d, string n, TIPO ti){
     this->duracao = d;

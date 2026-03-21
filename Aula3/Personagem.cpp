@@ -3,6 +3,8 @@
 Personagem::Personagem(){
     this->vida = 100;
     this->nome = "";
+    this->inv = new Inventario();
+    this->mostrarStatus();
 }
 
 Personagem::~Personagem(){
@@ -47,4 +49,8 @@ void Personagem::curar(int cura){
 void Personagem::mostrarStatus(){
     cout << "Nome: " << this->nome << endl;
     cout << "Vida: " << this->vida << endl;
+}
+
+void Personagem::pegarItem(Item * i){
+    this->inv->adicionarItem(i);
 }
