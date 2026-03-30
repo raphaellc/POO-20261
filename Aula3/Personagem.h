@@ -5,20 +5,22 @@
 
 using namespace std;
 class Personagem {
-    private:
+    protected:
         int vida;
         string nome;
         Inventario * inv;
+
     public:
         Personagem();
-        ~Personagem();
+        virtual ~Personagem();
         void definirVida(int v);
         int obterVida();
         void definirNome(string n);
         string obterNome();
-        void atacar(Personagem *p);
+        virtual void atacar(Personagem *p);
         void defender(int dano);
         void curar(int cura);
         void mostrarStatus();
         void pegarItem(Item * i);
+        
 };
