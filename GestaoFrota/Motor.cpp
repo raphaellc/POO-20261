@@ -4,11 +4,13 @@
 
 
 Motor::Motor(int potencia, std::string tipo) {
-   
+    this->potencia = potencia;
+    this->tipoCombustivel = tipo;
 }
 
 
 Motor::~Motor() {
+    std::cout << "Motor destruido." << std::endl;
     
 }
 
