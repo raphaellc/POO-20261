@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(g++ -std=c++17 -g main.o Motor.o Veiculo.o CarroPasseio.o Caminhao.o GerenciadoraVeiculos.o)",
+      "Bash(./a.exe)",
+      "Bash(g++ --version)"
+    ]
+  }
+}

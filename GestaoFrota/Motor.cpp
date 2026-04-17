@@ -3,13 +3,12 @@
 #include <iostream>
 
 
-Motor::Motor(int potencia, std::string tipo) {
-   
+Motor::Motor(int potencia, std::string tipo)
+    : potencia(potencia), tipoCombustivel(tipo) {
 }
 
-
 Motor::~Motor() {
-    
+    std::cout << "Motor destruido." << std::endl;
 }
 
 
