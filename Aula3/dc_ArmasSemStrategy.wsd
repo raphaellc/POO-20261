@@ -1,0 +1,23 @@
+@startuml Strategy_Problema
+skinparam classAttributeIconSize 0
+note as N
+  Problema: lógica de ataque hardcoded
+  em cada subclasse. Trocar forma de
+  atacar = nova subclasse.
+  Itens (Espada, Machado) ignorados.
+end note
+
+abstract class Personagem {
+  + atacar(p: Personagem*) {virtual}
+}
+class Humano {
+  + atacar(p: Personagem*) override
+  ' hardcoded: p->defender(10 + versatilidade)
+}
+class Orc {
+  + atacar(p: Personagem*) override
+  ' hardcoded: p->defender(20)
+}
+Personagem <|-- Humano
+Personagem <|-- Orc
+@enduml

@@ -1,0 +1,54 @@
+@startuml Observer_Solucao
+skinparam classAttributeIconSize 0
+
+interface PersonagemObserver {
+  + onVidaAlterada(nome: string, vidaAtual: int) {abstract}
+  + onMorte(nome: string) {abstract}
+  + onItemAdicionado(nome: string, item: Item*) {abstract}
+}
+
+abstract class Personagem {
+  # vida  : int
+  # nome  : string
+  # observers : vector<PersonagemObserver*>
+  + adicionarObserver(o: PersonagemObserver*)
+  + removerObserver(o: PersonagemObserver*)
+  # notificar()
+  + defender(dano: int)
+  + pegarItem(i: Item*)
+}
+
+class BatalhaView {
+  + onVidaAlterada(nome: string, vida: int) override
+  + onMorte(nome: string) override
+  + onItemAdicionado(nome: string, item: Item*) override
+}
+
+class LogView {
+  - arquivo : ofstream
+  + onVidaAlterada(nome: string, vida: int) override
+  + onMorte(nome: string) override
+  + onItemAdicionado(nome: string, item: Item*) override
+}
+
+class BatalhaController {
+  - batalha : RPG*
+  - p1      : Personagem*
+  - p2      : Personagem*
+  + iniciar()
+  + configurarObservers()
+}
+
+PersonagemObserver <|.. BatalhaView
+PersonagemObserver <|.. LogView
+Personagem o--> PersonagemObserver : observers
+BatalhaController --> Personagem : configura observers
+BatalhaController --> BatalhaView : cria e injeta
+
+note right of Personagem
+  defender() chama notificar()
+  que itera observers e chama
+  onVidaAlterada() em cada um.
+  Model não conhece View.
+end note
+@enduml

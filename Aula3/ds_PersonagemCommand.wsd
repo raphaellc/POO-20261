@@ -1,0 +1,22 @@
+@startuml Command_Sequencia
+participant "RPG" as R
+participant "HistoricoBatalha" as H
+participant "AtacarComando" as AC
+participant "Personagem p1" as P1
+participant "Personagem p2" as P2
+
+R -> AC : new AtacarComando(p1, p2)
+R -> H  : registrar(atacarCmd)
+activate H
+H -> AC : executar()
+activate AC
+AC -> P1 : atacar(p2)
+activate P1
+P1 -> P2 : defender(dano)
+P1 --> AC
+deactivate P1
+AC --> H
+deactivate AC
+deactivate H
+R -> H : exibirLog()
+@enduml

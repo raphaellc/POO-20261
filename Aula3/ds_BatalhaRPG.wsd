@@ -1,0 +1,27 @@
+@startuml MVC_Sequencia
+actor Usuario
+participant "BatalhaController" as BC
+participant "RPG\n(Model)" as RPG
+participant "HistoricoBatalha" as HB
+participant "AtacarComando" as AC
+participant "BatalhaView" as BV
+
+Usuario -> BC : iniciar()
+activate BC
+BC -> RPG : new RPG(p1, p2)
+BC -> HB  : new HistoricoBatalha()
+
+loop cada turno
+  BC -> BV : exibirStatus(p1, p2)
+  BC -> AC : new AtacarComando(p1, p2)
+  BC -> HB : registrar(cmd)
+  activate HB
+  HB -> AC : executar()
+  AC -> RPG : p1->atacar(p2)
+  deactivate HB
+  BC -> BV : exibirLog(historico)
+end
+
+BC -> BV : exibirResultado(vencedor)
+deactivate BC
+@enduml

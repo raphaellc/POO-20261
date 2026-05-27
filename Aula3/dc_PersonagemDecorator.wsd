@@ -1,0 +1,46 @@
+@startuml Decorator_Solucao
+skinparam classAttributeIconSize 0
+
+abstract class Personagem {
+  # vida : int
+  # nome : string
+  + atacar(p: Personagem*) {virtual}
+  + defender(dano: int) {virtual}
+  + obterVida() : int
+}
+
+abstract class PersonagemDecorator {
+  # componente : Personagem*
+  + PersonagemDecorator(p: Personagem*)
+  + atacar(p: Personagem*) {virtual}
+  + defender(dano: int) {virtual}
+}
+
+class Humano {
+  + atacar(p: Personagem*) override
+}
+
+class ArmorDecorator {
+  - reducaoDano : int
+  + defender(dano: int) override
+}
+
+class PoisonDecorator {
+  - danoVeneno : int
+  + atacar(p: Personagem*) override
+}
+
+Personagem <|-- Humano
+Personagem <|-- PersonagemDecorator
+PersonagemDecorator <|-- ArmorDecorator
+PersonagemDecorator <|-- PoisonDecorator
+PersonagemDecorator o--> Personagem : componente
+
+note right of PersonagemDecorator
+  Delega para componente e
+  acrescenta comportamento.
+  Empilháveis em runtime:
+  new ArmorDecorator(
+    new PoisonDecorator(humano))
+end note
+@enduml

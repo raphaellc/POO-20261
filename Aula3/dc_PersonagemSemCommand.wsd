@@ -1,0 +1,18 @@
+@startuml Command_Problema
+skinparam classAttributeIconSize 0
+note as N
+  Problema: ações chamadas diretamente.
+  Sem histórico, sem log, sem undo.
+end note
+
+class RPG {
+  + iniciarBatalha()
+}
+abstract class Personagem {
+  + atacar(p: Personagem*)
+  + curar(cura: int)
+  + pegarItem(i: Item*)
+}
+
+RPG --> Personagem : chama diretamente\n(sem intermediário)
+@enduml

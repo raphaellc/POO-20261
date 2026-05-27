@@ -1,0 +1,57 @@
+@startuml MVC_Pacotes
+skinparam packageStyle rectangle
+
+package "Model" {
+  class Personagem
+  class Humano
+  class Orc
+  class Item
+  class Inventario
+  class RPG
+}
+
+package "View" {
+  class BatalhaView {
+    + exibirStatus(p: Personagem*)
+    + exibirResultado(vencedor: string)
+    + exibirLog(historico: HistoricoBatalha*)
+  }
+  class MenuView {
+    + exibirMenu()
+    + exibirPersonagens(lista: vector<Personagem*>)
+  }
+}
+
+package "Controller" {
+  class BatalhaController {
+    - batalha   : RPG*
+    - historico : HistoricoBatalha*
+    - view      : BatalhaView*
+    + iniciar()
+    + executarTurno()
+  }
+  class PersonagemController {
+    - dao  : PersonagemDAO*
+    - view : MenuView*
+    + criarPersonagem(tipo, nome)
+    + listarPersonagens()
+  }
+}
+
+package "DAO" {
+  interface PersonagemDAO
+  class PersonagemDAOArquivo
+  class PersonagemDAOMemoria
+}
+
+Controller ..> Model : usa
+Controller ..> View  : atualiza
+Controller ..> DAO   : persiste
+View       ..> Model : lê para exibir
+
+note bottom of Controller
+  Controller orquestra Model + View.
+  View NÃO chama Model diretamente.
+  DAO é usado APENAS pelo Controller.
+end note
+@enduml

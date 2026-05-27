@@ -1,0 +1,43 @@
+@startuml Strategy_Solucao
+skinparam classAttributeIconSize 0
+
+interface AtaqueStrategy {
+  + executar(atacante: Personagem*, alvo: Personagem*) {abstract}
+}
+
+class EspadaStrategy {
+  + executar(atacante: Personagem*, alvo: Personagem*) override
+}
+class MachadoStrategy {
+  + executar(atacante: Personagem*, alvo: Personagem*) override
+}
+class ArcoStrategy {
+  + executar(atacante: Personagem*, alvo: Personagem*) override
+}
+
+abstract class Personagem {
+  # estrategiaAtaque : AtaqueStrategy*
+  + setEstrategiaAtaque(s: AtaqueStrategy*)
+  + atacar(p: Personagem*)
+}
+
+class Humano {
+  + atacar(p: Personagem*) override
+}
+class Orc {
+  + atacar(p: Personagem*) override
+}
+
+AtaqueStrategy <|.. EspadaStrategy
+AtaqueStrategy <|.. MachadoStrategy
+AtaqueStrategy <|.. ArcoStrategy
+Personagem o--> AtaqueStrategy : estrategiaAtaque
+Personagem <|-- Humano
+Personagem <|-- Orc
+
+note bottom of Personagem
+  atacar() chama:
+  estrategiaAtaque->executar(this, alvo)
+  Troca de estratégia em runtime!
+end note
+@enduml

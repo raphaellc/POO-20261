@@ -1,0 +1,18 @@
+@startuml Strategy_Sequencia
+participant "Humano\n(Personagem)" as H
+participant "EspadaStrategy" as ES
+participant "Orc\n(Personagem)" as O
+
+[-> H : setEstrategiaAtaque(new EspadaStrategy())
+[-> H : atacar(orc)
+activate H
+H -> ES : executar(this, orc)
+activate ES
+ES -> O : defender(dano_espada)
+activate O
+O --> ES : ok
+deactivate O
+ES --> H
+deactivate ES
+deactivate H
+@enduml

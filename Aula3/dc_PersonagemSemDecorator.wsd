@@ -1,0 +1,24 @@
+@startuml Decorator_Problema
+skinparam classAttributeIconSize 0
+note as N
+  Problema: para cada combinação de buff
+  é necessária uma nova subclasse.
+  HumanoComArmadura, HumanoComVeneno,
+  HumanoComArmaduaEVeneno...
+  Explosão combinatória!
+end note
+
+abstract class Personagem {
+  + atacar(p: Personagem*) {virtual}
+  + defender(dano: int) {virtual}
+}
+class Humano { + atacar() override }
+class HumanoComArmadura { + defender() override }
+class HumanoComVeneno   { + atacar()  override }
+class HumanoComArmaduaEVeneno { + atacar() override\n+ defender() override }
+
+Personagem <|-- Humano
+Humano <|-- HumanoComArmadura
+Humano <|-- HumanoComVeneno
+Humano <|-- HumanoComArmaduaEVeneno
+@enduml

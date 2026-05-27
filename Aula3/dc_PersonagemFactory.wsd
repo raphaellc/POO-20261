@@ -1,0 +1,34 @@
+@startuml Factory_Solucao
+skinparam classAttributeIconSize 0
+
+class PersonagemFactory {
+  + {static} criar(tipo: string, nome: string) : Personagem*
+}
+
+abstract class Personagem {
+  # vida : int
+  # nome : string
+  # inv : Inventario*
+  + definirNome(n: string)
+  + atacar(p: Personagem*) {virtual}
+  + defender(dano: int)
+  + mostrarStatus()
+}
+
+class Humano {
+  - versatilidade : int
+  + atacar(p: Personagem*) override
+  + setVersatilidade(v: int)
+}
+
+class Orc {
+  + usarHabilidade() override
+  + atacar(p: Personagem*) override
+}
+
+PersonagemFactory ..> Personagem : <<cria>>
+PersonagemFactory ..> Humano : <<cria>>
+PersonagemFactory ..> Orc   : <<cria>>
+Personagem <|-- Humano
+Personagem <|-- Orc
+@enduml

@@ -1,0 +1,23 @@
+@startuml Observer_Problema
+skinparam classAttributeIconSize 0
+note as N
+  Problema: Personagem conhece BatalhaView
+  diretamente para notificar mudanças.
+  Acoplamento forte — Model depende de View.
+  Adicionar LogView exige modificar Personagem.
+end note
+
+class Personagem {
+  - vida : int
+  - view : BatalhaView*
+  + defender(dano: int)
+  ' defender() chama view->atualizar()
+  ' diretamente — acoplamento!
+}
+
+class BatalhaView {
+  + atualizarHP(nome: string, vida: int)
+}
+
+Personagem --> BatalhaView : acoplamento direto
+@enduml

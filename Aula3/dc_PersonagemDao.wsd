@@ -1,0 +1,42 @@
+@startuml DAO_Solucao
+skinparam classAttributeIconSize 0
+
+interface PersonagemDAO {
+  + salvar(p: Personagem*) {abstract}
+  + buscarPorNome(nome: string) : Personagem* {abstract}
+  + listar() : vector<Personagem*> {abstract}
+  + remover(nome: string) {abstract}
+}
+
+class PersonagemDAOArquivo {
+  - caminhoArquivo : string
+  + salvar(p: Personagem*) override
+  + buscarPorNome(nome: string) : Personagem* override
+  + listar() : vector<Personagem*> override
+  + remover(nome: string) override
+}
+
+class PersonagemDAOMemoria {
+  - armazenamento : map<string, Personagem*>
+  + salvar(p: Personagem*) override
+  + buscarPorNome(nome: string) : Personagem* override
+  + listar() : vector<Personagem*> override
+  + remover(nome: string) override
+}
+
+abstract class Personagem {
+  # vida : int
+  # nome : string
+}
+
+PersonagemDAO <|.. PersonagemDAOArquivo
+PersonagemDAO <|.. PersonagemDAOMemoria
+PersonagemDAO ..> Personagem : <<usa>>
+
+note right of PersonagemDAO
+  PersonagemDAOMemoria: testes e gameplay.
+  PersonagemDAOArquivo: persistência real
+  (JSON/CSV). Personagem não sabe como
+  é salvo — baixo acoplamento.
+end note
+@enduml

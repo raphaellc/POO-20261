@@ -1,0 +1,26 @@
+@startuml Factory_Sequencia
+actor main
+participant "PersonagemFactory" as F
+participant "Humano" as H
+participant "Orc" as O
+
+main -> F : criar("Humano", "Mario")
+activate F
+F -> H : new Humano()
+activate H
+H --> F : Humano*
+deactivate H
+F -> H : definirNome("Mario")
+F --> main : Personagem* (Humano)
+deactivate F
+
+main -> F : criar("Orc", "Luigi")
+activate F
+F -> O : new Orc()
+activate O
+O --> F : Orc*
+deactivate O
+F -> O : definirNome("Luigi")
+F --> main : Personagem* (Orc)
+deactivate F
+@enduml

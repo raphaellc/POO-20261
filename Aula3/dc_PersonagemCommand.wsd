@@ -1,0 +1,55 @@
+@startuml Command_Solucao
+skinparam classAttributeIconSize 0
+
+interface Comando {
+  + executar() {abstract}
+  + desfazer() {abstract}
+}
+
+class AtacarComando {
+  - atacante : Personagem*
+  - alvo     : Personagem*
+  + executar() override
+  + desfazer() override
+}
+
+class CurarComando {
+  - personagem : Personagem*
+  - quantidade : int
+  + executar() override
+  + desfazer() override
+}
+
+class UsarItemComando {
+  - personagem : Personagem*
+  - item       : Item*
+  + executar() override
+  + desfazer() override
+}
+
+class HistoricoBatalha {
+  - refeitos : stack<Comando*>
+  + registrar(c: Comando*)
+  + desfazerUltimo()
+  + exibirLog()
+}
+
+abstract class Personagem {
+  + atacar(p: Personagem*)
+  + curar(cura: int)
+}
+
+class RPG {
+  - historico : HistoricoBatalha*
+  + iniciarBatalha()
+}
+
+Comando <|.. AtacarComando
+Comando <|.. CurarComando
+Comando <|.. UsarItemComando
+HistoricoBatalha o--> Comando : fila
+RPG --> HistoricoBatalha
+AtacarComando --> Personagem
+CurarComando  --> Personagem
+UsarItemComando --> Personagem
+@enduml

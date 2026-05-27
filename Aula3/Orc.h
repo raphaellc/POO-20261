@@ -1,5 +1,5 @@
 #include "Classe.h"
-class Orc : public Classe{
+class Orc : public Personagem, public Classe{
 
     public:
     virtual void usarHabilidade() override;
